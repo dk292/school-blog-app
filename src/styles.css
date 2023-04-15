@@ -5,11 +5,26 @@
     --primary-color: #026467;
     --secondary-color: #ebebcc;
     --body-text-color: #596392;
-    --navbar-footer-color: #f5e4e4;
+    --navbar-footer-color: #f8f7f7;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     font-style: 12px;
     color: var(--body-text-color);
+}
+
+
+.site-logo {
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+
+
+.nav-link {
+    color: var(--primary-color);
 }
