@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, query, where, limit, orderBy, doc , docData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, query, where, limit, orderBy, doc , docData, updateDoc, increment } from '@angular/fire/firestore';
 import { Observable } from 'rxjs'
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,13 @@ export class PostsService {
     const collectionInstance = collection(this.fireStore, 'posts')
     const q = query(collectionInstance, where('category.categoryId', '==', cardId), limit(4))
     return  collectionData(q, {idField: 'id'})
+  }
+
+  countViews(postId: string){
+    const viewCount = {
+      views: increment(1)
+    }
+    const docInstance = doc(this.fireStore, "posts", postId)
+    updateDoc(docInstance, viewCount).then(() => console.log("Views Count Updated ...!"))
   }
 }
