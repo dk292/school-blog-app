@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, query, where, limit, orderBy } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, query, where, limit, orderBy, doc , docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs'
 
 @Injectable({
@@ -27,5 +27,10 @@ export class PostsService {
     const collectionInstance = collection(this.fireStore, 'posts')
     const q = query(collectionInstance, where('category.categoryId', '==', categoryId), limit(4))
     return  collectionData(q, {idField: 'id'})
+  }
+
+  loadOnePost(postId: string){
+    const docInstance = doc(this.fireStore, "posts", postId)
+    return docData(docInstance)
   }
 }

@@ -3,22 +3,15 @@
         <div class="col-md-9">
 
             <div class="card shadow-effect">
-                <img src="https://images.unsplash.com/photo-1661956601349-f61c959a8fd4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="" class="card-img-top img-fluid">
+                <img src="{{ postData.postImgPath }}" alt="" class="card-img-top img-fluid">
                 <div class="card-body">
-                    <small class="bg-light text-danger text-center">Design</small>
+                    <small class="bg-light text-danger text-center">{{ postData.category.category }} </small>
                     <small class="bg-light text-success text-center ml-2">Featured </small>
-                    <small class="bg-light text-info text-center ml-2">Views - 100,00</small>
-                    <small class="bg-light text-warning text-center ml-2">LAST UPDATED - SEP 20, 2022</small>
+                    <small class="bg-light text-info text-center ml-2">Views - {{ postData.views }}</small>
+                    <small class="bg-light text-warning text-center ml-2">LAST UPDATED - {{ postData.createdAt.toMillis() | date }} </small>
 
-                    <h1 class="mt-3 mb-3">HOW TO START A BLOG IN 2023 EDITION NEW CATEGORY</h1>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit aspernatur voluptatibus provident, repellendus accusantium quidem rerum porro non fuga perferendis nihil quo, eaque voluptas aperiam doloribus delectus ea dolore distinctio.
+                    <h1 class="mt-3 mb-3"> {{ postData.title }} </h1>
+                    <p [innerHTML]="postData.content">
                     </p>
                 </div>
             </div>
