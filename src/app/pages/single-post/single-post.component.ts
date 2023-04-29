@@ -10,6 +10,7 @@ import { PostsService } from 'src/app/services/posts.service';
 export class SinglePostComponent implements OnInit{
 
   postData!: any
+  similarPost!: Array<object>
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +21,15 @@ export class SinglePostComponent implements OnInit{
       this.route.params.subscribe(val => {
         this.postService.loadOnePost(val['id']).subscribe(post => {
           this.postData = post
+          this.loadSimilarPost(this.postData.category.categoryId)
         })
       })
+  }
+
+  loadSimilarPost(cardId: string){
+    this.postService.loadSimilar(cardId).subscribe(val => {
+      this.similarPost = val
+    })
   }
 
 }

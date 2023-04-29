@@ -33,4 +33,10 @@ export class PostsService {
     const docInstance = doc(this.fireStore, "posts", postId)
     return docData(docInstance)
   }
+
+  loadSimilar(cardId: string){
+    const collectionInstance = collection(this.fireStore, 'posts')
+    const q = query(collectionInstance, where('category.categoryId', '==', cardId), limit(4))
+    return  collectionData(q, {idField: 'id'})
+  }
 }
