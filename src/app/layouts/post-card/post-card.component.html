@@ -1,4 +1,4 @@
-<div class="card shadow-effect" *ngIf="postData">
+<div class="card shadow-effect mb-2" *ngIf="postData">
     <img src="{{postData.postImgPath}}" alt="card image" class="card-img-top">
     <div class="card-body">
         <small class="bg-light text-danger text-center">{{ postData.category.category }}</small>
@@ -7,6 +7,6 @@
 
         <h5 class="mt-1">{{ postData.title }}</h5>
         <p>{{ postData.excerpt }}</p>
-        <!-- <small class="bg-light text-warning text-center ml-3">LAST UPDATED - {{ posData.createdAt.toMillis( ) | date }}</small> -->
+        <small class="bg-light text-warning text-center ml-3">LAST UPDATED - {{ postData.createdAt.toMillis( ) | date }}</small>
     </div>
 </div>

@@ -17,9 +17,7 @@ export class PostCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.postSerice.loadDataPost().subscribe(val => {
-      console.log(val)
-    })
+    
   }
 
   

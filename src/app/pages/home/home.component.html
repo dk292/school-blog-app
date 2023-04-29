@@ -20,14 +20,8 @@
         <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
     <div class="row">
-        <div class="col-md-4 mt3">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt3">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4 mt3">
-            <app-post-card></app-post-card>
+        <div class="col-md-4 mt3" *ngFor="let latest of latestPost">
+            <app-post-card [postData]="latest"></app-post-card>
         </div>
     </div>
 </section>

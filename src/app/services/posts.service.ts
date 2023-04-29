@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, query, where, limit } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, query, where, limit, orderBy } from '@angular/fire/firestore';
 import { Observable } from 'rxjs'
 
 @Injectable({
@@ -17,10 +17,9 @@ export class PostsService {
     return  collectionData(q, {idField: 'id'})
   }
 
-  loadDataPost(): Observable<any> {
-
+  loadLatest(){
     const collectionInstance = collection(this.fireStore, 'posts')
-
-    return  collectionData(collectionInstance, {idField: 'id'})
+    const q = query(collectionInstance, orderBy('createdAt'))
+    return  collectionData(q, {idField: 'id'})
   }
 }
