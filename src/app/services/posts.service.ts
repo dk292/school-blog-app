@@ -22,4 +22,10 @@ export class PostsService {
     const q = query(collectionInstance, orderBy('createdAt'))
     return  collectionData(q, {idField: 'id'})
   }
+
+  loadCategoryPost(categoryId: string){
+    const collectionInstance = collection(this.fireStore, 'posts')
+    const q = query(collectionInstance, where('category.categoryId', '==', categoryId), limit(4))
+    return  collectionData(q, {idField: 'id'})
+  }
 }
