@@ -19,7 +19,6 @@ export class SingleCategoryComponent implements OnInit {
 
   ngOnInit(): void {
       this.route.params.subscribe(val => {
-        console.log(val)
         this.categoryObj = val
         this.postService.loadCategoryPost(val['id']).subscribe(post => {
           this.postArray = post
