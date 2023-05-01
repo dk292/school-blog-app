@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Sub } from '../models/sub';
 
 @Component({
   selector: 'app-subscription-form',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class SubscriptionFormComponent {
 
+  constructor(){}
+
+  onSubmit(formVal: any){
+    const subData: Sub = {
+      name: formVal.name,
+      email: formVal.email
+    }
+  }
 }
