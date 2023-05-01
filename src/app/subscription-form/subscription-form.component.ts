@@ -8,7 +8,8 @@ import { SubscribersService } from '../services/subscribers.service';
   styleUrls: ['./subscription-form.component.css']
 })
 export class SubscriptionFormComponent {
-  subEmail!: string
+  subEmail: boolean = false
+  isSubscribe: boolean = false
 
   constructor(private subService: SubscribersService){}
 
@@ -22,8 +23,10 @@ export class SubscriptionFormComponent {
     this.subService.checkSub(subData.email).then((val) => {
       if(val.empty){
         this.subService.addSub(subData)
+        this.isSubscribe = true
       }else{
         console.log("Email is already used in Subscription...!")
+        this.subEmail = true
       }
     })
 

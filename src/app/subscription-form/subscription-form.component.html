@@ -3,7 +3,15 @@
         <div class="text-center mt-3 mb-5">
             <h3>SUBSCRIPTION FORM</h3>
             <p class="m-auto sub-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit.  </p>
-            <form class="form-inline mb-5 mt-5" #subForm="ngForm" (ngSubmit)="onSubmit(subForm.value)">
+
+            <div class="alert alert-danger mt-3" *ngIf="subEmail">
+                Email is already in used
+            </div>
+            <div class="alert alert-info mt-3" *ngIf="isSubscribe">
+                Thank you for subscribing to our newsletter service. Stay tuned for Awesome blog posts...!
+            </div>
+
+            <form class="form-inline mb-5 mt-5" #subForm="ngForm" (ngSubmit)="onSubmit(subForm.value)" *ngIf="!isSubscribe">
 
                 <div class="form-group col-md-5">
                     <input 
