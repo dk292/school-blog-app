@@ -8,6 +8,7 @@ import { SubscribersService } from '../services/subscribers.service';
   styleUrls: ['./subscription-form.component.css']
 })
 export class SubscriptionFormComponent {
+  subEmail!: string
 
   constructor(private subService: SubscribersService){}
 
@@ -17,7 +18,14 @@ export class SubscriptionFormComponent {
       email: formVal.email
     }
 
-    this.subService.addSub(subData)
+    
+    this.subService.checkSub(subData.email).then((val) => {
+      if(val.empty){
+        this.subService.addSub(subData)
+      }else{
+        console.log("Email is already used in Subscription...!")
+      }
+    })
 
   }
 }

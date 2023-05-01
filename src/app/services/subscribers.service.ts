@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, query, limit, where, getDocs, collectionData, } from '@angular/fire/firestore';
+import { Sub } from '../models/sub';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,11 @@ export class SubscribersService {
     addDoc(data, subData).then(() => {
       console.log("Subscriber Saved Successfully")
     })
+  }
+
+  checkSub( subEmail: string ){
+    const data = collection(this.fireStore, 'subscribers')
+    const q = query(data ,where('email', '==', subEmail))
+    return getDocs(q)
   }
 }
